@@ -12,5 +12,5 @@ function my_str_reverse(string $myString) {
     
 }
 
-my_str_reverse("murder");
+my_str_reverse("narco");
 ?>
