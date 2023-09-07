@@ -1,41 +1,36 @@
-<?php
-function find_all_student() {
-    $database = new PDO('mysql:host=localhost;dbname=lp_official;charset=utf8;port=3307', 'root', '');
-    $request = $database->prepare('SELECT * FROM student');
-    $request->execute(array());
-    return $userDatabase = $request->fetchAll(PDO::FETCH_ASSOC);
-}
+<?php 
 
-// var_dump(find_all_student());
+function find_all_students_grades() {
+    $database = new PDO('mysql:host=localhost;dbname=lp_official;charset=utf8;port=3307', 'root', '');
+    $request = $database->prepare('SELECT email, fullname, grade.name as grade_name FROM student
+                                  INNER JOIN grade 
+                                  ON student.grade_id = grade.id');
+    $request->execute(array());
+    return $data = $request->fetchAll(PDO::FETCH_ASSOC);   
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jour 2 job 1</title>
+    <title>jour 2 job 4</title>
 </head>
 <body>
     <table border>
         <thead>
             <tr>
-                <th>id</th>
-                <th>grade_id</th>
                 <th>email</th>
                 <th>fullname</th>
-                <th>birthdate</th>
-                <th>gender</th>
+                <th>grade_name</th>
             </tr>
         </thead>
         <tbody>
-        <?php foreach (find_all_student() as $student) : ?>
+        <?php foreach (find_all_students_grades() as $student) : ?>
             <tr>
-                <td><?php echo $student['id'];?></td>
-                <td><?php echo $student['grade_id'];?></td>
                 <td><?php echo $student['email'];?></td>
                 <td><?php echo $student['fullname'];?></td>
-                <td><?php echo $student['birthdate'];?></td>
-                <td><?php echo $student['gender'];?></td>
+                <td><?php echo $student['grade_name'];?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>       
