@@ -3,22 +3,23 @@
 class student {
 
     //attribut 
-    private ?int $id;
-    private ?int $grade_id;
-    private ?string $email;
-    private ?string $fullname;
-    private ?datetime $birthdate;
-    private string $gender;
+    public ?int $id;
+    public ?int $grade_id;
+    public ?string $email;
+    public ?string $fullname;
+    public ?datetime $birthdate;
+    public string $gender;
 
     //constructeur 
 
-    public function __construct() {
-        $this->id = 0;
-        $this->grade_id = 0;
-        $this->email = "nonn@toto.com";
-        $this->fullname = "nene";
-        $this->birthdate = new datetime("00-00-0000");
-        $this->gender = "";
+    public function __construct(int $id = 2, int $grade_id = 2, string $email = "tedy@tu.io", string $fullname = "ted", $birthdate = new datatime("1998-02-03"), $gender = "male") {
+        
+        $this->id = $id;
+        $this->grade_id = $grade_id;
+        $this->email = $email;
+        $this->fullname = $fullname;
+        $this->birthdate = $birthdate;
+        $this->gender = $gender;
         
     }
     
